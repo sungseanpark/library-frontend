@@ -4,7 +4,7 @@ import Select from 'react-select'
 
 import { EDIT_AUTHOR, ALL_AUTHORS } from '../queries'
 
-const AuthorForm = ({ setError }) => {
+const AuthorForm = (props) => {
     const [selectedAuthor, setSelectedAuthor] = useState(null);
     const [born, setBorn] = useState('');
 
@@ -21,7 +21,7 @@ const AuthorForm = ({ setError }) => {
     event.preventDefault()
 
     if (!selectedAuthor) {
-        setError('Please select an author');
+        props.setError('Please select an author');
         return;
       }
 
@@ -52,6 +52,11 @@ const AuthorForm = ({ setError }) => {
 //       setError('person not found')
 //     }
 //   }, [result.data])
+
+if (!props.show) {
+  return null
+}
+
 
   return (
     <div>
